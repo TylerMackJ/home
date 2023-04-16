@@ -1,0 +1,6 @@
+require('options.misc')
+require('options.indent')
+require('options.search')
+require('options.tab')
+require('options.undo')
+require('options.view')
