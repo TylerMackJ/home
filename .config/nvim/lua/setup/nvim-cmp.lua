@@ -3,7 +3,7 @@ local luasnip = require('luasnip')
 
 -- nvim-cmp setup
 local cmp = require('cmp')
-cmp.setup {
+cmp.setup({
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -40,7 +40,19 @@ cmp.setup {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
     },
-}
+    sorting = {
+        comparators = {
+            cmp.config.compare.offest,
+            cmp.config.compare.exact,
+            cmp.config.compare.recently_used,
+            require("clangd_extensions.cmp_scores"),
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        },
+    },
+})
 cmp.setup.cmdline('/', {
     sources = cmp.config.sources({
         { name = 'nvim_lsp_document_symbol' }

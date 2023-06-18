@@ -1,15 +1,29 @@
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- Package manager
     use 'EdenEast/nightfox.nvim' -- Colorscheme
+    use 'nvim-tree/nvim-web-devicons'
     use {
         'neovim/nvim-lspconfig',
         requires = {
-            'hrsh7th/cmp-nvim-lsp'
+            'hrsh7th/cmp-nvim-lsp',
+            'p00f/clangd_extensions.nvim',
         },
         config = function()
             require('setup.lspconfig')
         end,
     } 
+    use {
+        'mfussenegger/nvim-lint',
+        config = function()
+            require('setup.lint')
+        end,
+    }
+    use {
+        'mhartington/formatter.nvim',
+        config = function()
+            require('setup.formatter')
+        end,
+    }
     use {
         'hrsh7th/nvim-cmp',
         requires = {
@@ -17,6 +31,7 @@ return require('packer').startup(function(use)
             'L3MON4D3/LuaSnip',
             'hrsh7th/cmp-nvim-lsp-document-symbol',
             'hrsh7th/cmp-nvim-lsp-signature-help',
+            'p00f/clangd_extensions.nvim',
         },
         config = function()
             require('setup.nvim-cmp')
@@ -47,5 +62,41 @@ return require('packer').startup(function(use)
             require('setup.which-key')
         end,
     }
+    use {
+        'folke/trouble.nvim',
+        config = function()
+            require('setup.trouble')
+        end,
+    }
     use 'lukas-reineke/indent-blankline.nvim'
+    use {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.1',
+        requires = {
+            'nvim-lua/plenary.nvim',
+        },
+        config = function()
+            require('setup.telescope')
+        end,
+    }
+    use {
+        'startup-nvim/startup.nvim',
+        requires = {
+            'nvim-telescope/telescope.nvim',
+            'nvim-lua/plenary.nvim',
+        },
+        config = function()
+            require('setup.startup')
+        end,
+    }
+    use {
+        'nvim-telescope/telescope-file-browser.nvim',
+        requires = {
+            'nvim-telescope/telescope.nvim',
+            'nvim-lua/plenary.nvim',
+        },
+        config = function()
+            require('setup.telescope-file-browser')
+        end,
+    }
 end)

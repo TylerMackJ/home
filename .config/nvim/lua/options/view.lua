@@ -1,6 +1,6 @@
 -- Colorscheme
 vim.cmd [[ set background=dark ]]
-vim.cmd [[ colorscheme nightfox ]]
+vim.cmd [[ colorscheme carbonfox ]]
 
 -- Line numbering
 vim.opt.number = true
