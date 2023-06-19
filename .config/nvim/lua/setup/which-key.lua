@@ -52,7 +52,7 @@ local keybinds = {
     d = {
         name = "Diagnostic",
         k = { function() vim.diagnostic.goto_prev() end, "Previous" },
-        j = { function() vim.diagnostic_goto_next() end, "Next" },
+        j = { function() vim.diagnostic.goto_next() end, "Next" },
         f = { function() vim.lsp.buf.code_action() end, "Fix" },
     },
     g = {
@@ -82,8 +82,8 @@ if isModuleAvailable('nvim-tree.api') then
     local ntapi = require('nvim-tree.api')
     keybinds['e'] = {
         name = "Tree",
-        e = { 
-            function() 
+        e = {
+            function()
                 ntapi.tree.toggle({ find_file = true, focus = true, })
             end,
             "Explorer",
@@ -121,7 +121,7 @@ if isModuleAvailable('telescope.builtin') then
         g = {
             name = "Grep",
             a = { function() telescope.live_grep() end, "All Files" },
-            o = { 
+            o = {
                 function()
                     telescope.live_grep({
                         grep_open_files = true,

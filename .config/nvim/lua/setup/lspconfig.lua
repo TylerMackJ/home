@@ -13,6 +13,25 @@ for _, lsp in ipairs(servers) do
     }
 end
 
+lspconfig.lua_ls.setup {
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                globals = { 'vim', },
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file('', true),
+            },
+            telemtry = {
+                enable = false,
+            },
+        },
+    },
+}
+
 require('clangd_extensions').setup({
     extensions = {
         inlay_hints = {

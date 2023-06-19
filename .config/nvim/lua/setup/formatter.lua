@@ -23,7 +23,7 @@ require('formatter').setup({
                 return {
                     exe = 'autopep8',
                     args = {
-                        '--global-configs='..format_dur..'pycodestyle',
+                        '--global-configs='..format_dir..'pycodestyle',
                         '--aggressive',
                     },
                     stdin = false,
@@ -33,9 +33,9 @@ require('formatter').setup({
     }
 })
 
-vim.cmd [[
-augroup FormatAutogroup
-    autocmd!
-    autocmd BufWritePost * FormatWrite
-augroup END
-]]
+vim.api.nvim_create_autocmd('BufWritePost', {
+    desc = 'Format on write',
+    pattern = '*',
+    group = vim.api.nvim_create_augroup('FormatAutogroup', { clear = true }),
+    callback = function() vim.cmd [[FormatWrite]] end,
+})
