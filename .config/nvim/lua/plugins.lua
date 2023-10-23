@@ -1,7 +1,6 @@
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- Package manager
     use 'EdenEast/nightfox.nvim' -- Colorscheme
-    use 'nvim-tree/nvim-web-devicons'
     use {
         'neovim/nvim-lspconfig',
         requires = {
@@ -52,6 +51,9 @@ return require('packer').startup(function(use)
     }
     use {
         'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons',
+        },
         config = function()
             require('setup.nvim-tree')
         end,
